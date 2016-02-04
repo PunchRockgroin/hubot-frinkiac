@@ -1,5 +1,5 @@
 {
-  "name": "hubot-frinkiac",
+  "name": "hubot-frinkiac-me",
   "version": "0.1.0",
   "author": "Andrew Morin <andrew@andrewmorin.com",
   "description": "A Hubot script for getting images from frinkiac",
