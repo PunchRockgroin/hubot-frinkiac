@@ -8,6 +8,7 @@ class Frinkiac
   caption_url: "https://www.frinkiac.com/api/caption"
   meme_url: "https://www.frinkiac.com/meme/S01E06/831112.jpg?lines=+%E2%99%AA+I%27M+THE+SADDEST+KID+IN%0A+GRADE+NUMBER+TWO.+%E2%99%AA"
   meme_url: "https://www.frinkiac.com/meme"
+  max_line_length: 25
   regex: /frinkiac me.*?([a-zA-Z0-9_\-\.\s]*)$/i
 
   constructor: (robot, memeify)->
@@ -16,6 +17,25 @@ class Frinkiac
 
   encode: (str) =>
     return encodeURIComponent(str).replace(/%20/g, "+")
+
+  calculateMemeText: (subtitles) =>
+    subtitles = subtitles.map((x) -> return x.Content).join(" ").split(" ")
+
+    line = "";
+    lines = [];
+    while (subtitles.length > 0)
+      word = subtitles.shift()
+      if ((line.length == 0) || (line.length + word.length <= @max_line_length))
+        line += " " + word
+      else
+        lines.push(line);
+        line = "";
+        subtitles.unshift(word);
+
+    if (line.length > 0)
+      lines.push(line);
+
+    return lines.join("\n");
 
   handleImageGet: (err, res, body) =>
     if (err)
@@ -39,8 +59,7 @@ class Frinkiac
     ep = data.Frame.Episode
     stamp = data.Frame.Timestamp
     if data.Subtitles?.length > 0
-      subtitles = data.Subtitles.map((x) -> return x.Content).join("\n ")
-      subtitles = this.encode(subtitles)
+      subtitles = this.encode(this.calculateMemeText(data.Subtitles))
       @msg.send "#{@meme_url}/#{ep}/#{stamp}.jpg?lines=#{subtitles}#.png"
     else
       @msg.send "#{@img_url}/#{ep}/#{stamp}.jpg"
