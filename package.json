@@ -1,8 +1,8 @@
 {
   "name": "hubot-frinkiac-me",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "Andrew Morin <andrew@andrewmorin.com",
-  "description": "A Hubot script for getting images from frinkiac",
+  "description": "A Hubot script for getting images and captions from frinkiac",
   "keywords": [
     "hubot",
     "frinkiac"
