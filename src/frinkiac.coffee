@@ -21,10 +21,10 @@
 
 class Frinkiac
   # Init some URLS
-  search_url: "https://frinkiac.com/api/search?q="
-  img_url: "https://frinkiac.com/img"
-  caption_url: "https://frinkiac.com/api/caption"
-  meme_url: "https://frinkiac.com/meme"
+  search_url: 'https://frinkiac.com/api/search?q='
+  img_url: 'https://frinkiac.com/img'
+  caption_url: 'https://frinkiac.com/api/caption'
+  meme_url: 'https://frinkiac.com/meme'
 
   # Init some other settings
   max_line_length: 25
@@ -37,27 +37,27 @@ class Frinkiac
 
   # Helper for URL component generation
   encode: (str) =>
-    return encodeURIComponent(str).replace(/%20/g, "+")
+    return encodeURIComponent(str).replace(/%20/g, '+')
 
   # Determines actual meme text, with appropriate line breaks
   calculateMemeText: (subtitles) =>
-    subtitles = subtitles.map((x) -> return x.Content).join(" ").split(" ")
+    subtitles = subtitles.map((x) -> return x.Content).join(' ').split(' ')
 
-    line = "";
+    line = '';
     lines = [];
     while (subtitles.length > 0)
       word = subtitles.shift()
       if ((line.length == 0) || (line.length + word.length <= @max_line_length))
-        line += " " + word
+        line += ' ' + word
       else
         lines.push(line);
-        line = "";
+        line = '';
         subtitles.unshift(word);
 
     if (line.length > 0)
       lines.push(line);
 
-    return lines.join("\n");
+    return lines.join('\n');
 
   # Handle response from initial frinkiac search
   handleImageGet: (err, res, body) =>
@@ -72,7 +72,7 @@ class Frinkiac
       else
         @robot.http("#{@caption_url}?e=#{image.Episode}&t=#{image.Timestamp}").get() @handleCaptionGet
     else
-      @msg.send "http://bukk.it/fail.jpg"
+      @msg.send 'http://bukk.it/fail.jpg'
 
   # Handle response from caption API request
   handleCaptionGet: (err, res, body) =>
@@ -96,9 +96,9 @@ class Frinkiac
 
 module.exports = (robot) ->
   # Grab settings
-  memeify = if process.env.HUBOT_FRINKIAC_MEMEIFY == "false" then false else true
-  randomize = if process.env.HUBOT_FRINKIAC_RANDOMIZE == "true" then true else false
-  respond = if process.env.HUBOT_FRINKIAC_RESPOND_ONLY == "true" then true else false
+  memeify = if process.env.HUBOT_FRINKIAC_MEMEIFY == 'false' then false else true
+  randomize = if process.env.HUBOT_FRINKIAC_RANDOMIZE == 'true' then true else false
+  respond = if process.env.HUBOT_FRINKIAC_RESPOND_ONLY == 'true' then true else false
 
   # Create instance
   frinkiac = new Frinkiac(robot, memeify, randomize)
