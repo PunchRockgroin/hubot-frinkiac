@@ -1,18 +1,13 @@
 {
   "name": "hubot-frinkiac-me",
-  "version": "0.2.0",
-  "author": "Andrew Morin <andrew@andrewmorin.com",
+  "version": "1.0.0",
+  "author": "Andrew Morin <andrew@andrewmorin.com> (https://github.com/morinap)",
   "description": "A Hubot script for getting images and captions from frinkiac",
   "keywords": [
     "hubot",
     "frinkiac"
   ],
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://raw.githubusercontent.com/morinap/hubot-frinkiac/master/LICENSE"
-    }
-  ],
+  "bugs": "https://github.com/morinap/hubot-frinkiac/issues",
   "repository": {
     "type": "git",
     "url": "https://github.com/morinap/hubot-frinkiac.git"
