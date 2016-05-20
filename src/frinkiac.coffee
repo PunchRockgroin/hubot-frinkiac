@@ -8,11 +8,10 @@
 
 class Frinkiac
   # Init some URLS
-  search_url: "https://www.frinkiac.com/api/search?q="
-  img_url: "https://www.frinkiac.com/img"
-  caption_url: "https://www.frinkiac.com/api/caption"
-  meme_url: "https://www.frinkiac.com/meme/S01E06/831112.jpg?lines=+%E2%99%AA+I%27M+THE+SADDEST+KID+IN%0A+GRADE+NUMBER+TWO.+%E2%99%AA"
-  meme_url: "https://www.frinkiac.com/meme"
+  search_url: "https://frinkiac.com/api/search?q="
+  img_url: "https://frinkiac.com/img"
+  caption_url: "https://frinkiac.com/api/caption"
+  meme_url: "https://frinkiac.com/meme"
 
   # Init some other settings
   max_line_length: 25
