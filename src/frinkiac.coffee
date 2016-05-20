@@ -1,9 +1,22 @@
 # Description:
 #   Frinkiac Search and Meme generator
-# Behavior can be controlled with some environment variables:
-#  * HUBOT_FRINKIAC_MEMEIFY: True to place meme with caption on the image (Default: true)
-#  * HUBOT_FRINKIAC_RANDOMIZE: True to randomize the selected image (Default: false)
-#  * HUBOT_FRINKIAC_RESPOND_ONLY: True to respond only when directly addressed, false to respond to all messages (Default: false)
+#
+# Dependencies:
+#   None
+#
+# Configuration:
+#  HUBOT_FRINKIAC_MEMEIFY - True to place meme with caption on the image (Default: true)
+#  HUBOT_FRINKIAC_RANDOMIZE - True to randomize the selected image (Default: false)
+#  HUBOT_FRINKIAC_RESPOND_ONLY - True to respond only when directly addressed, false to respond to all messages (Default: false)
+#
+# Commands:
+#   (hubot )frinkiac me <query> - Searches for the query in the Frinkiac database and responds with an image/meme. Respond/hear controlled by configuration.
+#
+# Notes:
+#   Check out frinkiac.com, because it's pretty awesome!
+#
+# Author:
+#   github.com/morinap
 
 
 class Frinkiac
